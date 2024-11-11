@@ -1,12 +1,7 @@
 class ExampleController < ApplicationController
-  include ActionController::ContentSecurityPolicy
-
-  content_security_policy do |policy|
-    policy.script_src :self
-    policy.report_uri "/reports"
-  end
-
   def show
+    response.set_header "content-security-policy", "script-src 'self'; report-uri /reports"
+
     render html: <<~HTML.html_safe
       <html>
         <head>

@@ -2,7 +2,7 @@ require_relative "boot"
 
 require "rails"
 # Pick the frameworks you want:
-require "active_model/railtie"
+# require "active_model/railtie"
 # require "active_job/railtie"
 # require "active_record/railtie"
 # require "active_storage/engine"
@@ -10,7 +10,7 @@ require "action_controller/railtie"
 # require "action_mailer/railtie"
 # require "action_mailbox/engine"
 # require "action_text/engine"
-require "action_view/railtie"
+# require "action_view/railtie"
 # require "action_cable/engine"
 # require "rails/test_unit/railtie"
 
@@ -41,6 +41,22 @@ module CspReportCollector
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
 
-    config.middleware.use ActionDispatch::ContentSecurityPolicy::Middleware
+    config.middleware.delete ActionDispatch::HostAuthorization
+    config.middleware.delete Rack::Sendfile
+    config.middleware.delete ActionDispatch::Static
+    config.middleware.delete ActionDispatch::ServerTiming
+    config.middleware.delete Rails::Rack::Logger
+    config.middleware.delete ActionDispatch::RequestId
+    config.middleware.delete ActionDispatch::RemoteIp
+    config.middleware.delete ActionDispatch::ShowExceptions
+    config.middleware.delete ActionDispatch::DebugExceptions
+    config.middleware.delete ActionDispatch::ActionableExceptions
+    config.middleware.delete ActionDispatch::Reloader
+    config.middleware.delete ActionDispatch::Callbacks
+    config.middleware.delete Rack::ETag
+    config.middleware.delete Rack::Head
+    config.middleware.delete Rack::Runtime
+    config.middleware.delete Rack::ConditionalGet
+    config.middleware.delete ActionDispatch::Executor
   end
 end
