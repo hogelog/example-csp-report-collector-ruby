@@ -1,0 +1,20 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    json (2.8.1)
+    nio4r (2.7.4)
+    puma (6.4.3)
+      nio4r (~> 2.0)
+    rapidjson (0.4.0)
+
+PLATFORMS
+  arm64-darwin-23
+  ruby
+
+DEPENDENCIES
+  json
+  puma
+  rapidjson
+
+BUNDLED WITH
+   2.6.0.dev
